@@ -12,4 +12,11 @@ public class Cast {
     public String getRole() {
         return role;
     }
+
+    @Override
+    public String toString() {
+        return "Cast: " +
+                " fullName: " + fullName  +
+                ", role: " + role + '\n';
+    }
 }

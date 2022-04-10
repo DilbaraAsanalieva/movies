@@ -5,14 +5,49 @@ import java.util.Scanner;
 
 public class Main {
     private static final List<Movies> movies = JsonIO.getMovies();
-    private static SortAble s = (SortAble) new MovieStore();
-    private static FindAble f = (FindAble) new FindByMap();
-    private static Scanner in = new Scanner(System.in);
+    private static final MovieStore movieStore = new MovieStore();
+    private static FindAble findAble =  new FindByMap();
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) throws InputException {
-//        while (true) {
-//            start();
-//        }
+        Movies movies1 = new Movies();
+        while (true) {
+            commads();
+            Scanner scanner = new Scanner(System.in);
+            int number = scanner.nextInt();
+            if(number == 1){
+                movieStore.printAllMovies(movies);
+            }else if(number == 2) {
+                System.out.print("Write movie's name: ");
+                String name = in.nextLine();
+                movieStore.findMovie(movies, name);
+            }
+            else if (number == 3 ){
+                movieStore.sortByYear(movies);
+            }else if (number == 4 ){
+                movieStore.sortByName(movies);}
+            else if (number == 5) {
+                movieStore.sortByDirector(movies);
+            }else if(number == 6){
+                System.out.print("Write actor's name: ");
+                String actor = in.nextLine();
+                findAble.findMoviesByActor(movies,actor);
+            }else if(number == 7){
+                System.out.print("Write director's name: ");
+                String directorName = in.nextLine();
+                findAble.findMoviesByDirector(movies,directorName);
+            }else if(number == 8){
+                System.out.print("Write movie's year: ");
+                int year = in.nextInt();
+                findAble.findMoviesByYear(movies,year);
+            }else if(number == 9){
+                System.out.print("Write actor's name: ");
+                String actor = in.nextLine();
+                findAble.findMoviesByActor(movies,actor);
+            }else if(number == 10){
+                findAble.showActorRoles(movies);
+            }
+        }
     }
 
 
