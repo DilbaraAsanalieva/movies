@@ -13,7 +13,7 @@ public class MovieStore implements SortAble {
 
     @Override
     public void findMovie(List<Movies> movies,String input) {
-        movies.stream().map(Movies::getName).filter(name -> name.contains(input)).forEach(System.out::println);
+        movies.stream().filter(name -> name.getName().contains(input)).forEach(System.out::println);
 
     }
 
